@@ -11,7 +11,20 @@
 </head>
 <body>
   <header class="row">
-    <img id="chirpLogo" src="./img/chirp-logo.png" alt="Chirp Logo" />
+    <div class=" col-xs-3 col-xs-offset-5">
+      <img id="chirpLogo" src="./img/chirp-logo.png" alt="Chirp Logo" />
+    </div>
+    <div id="searchBar" class="col-xs-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Chirp..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Chirp!</button>
+        </span>
+      </div>
+    </div>
+    <div class="col-xs-1">
+      <img id="profilePic" src="http://unsplash.it/200?random" alt="Profile Picture" />
+    </div>
   </header>
   <br />
   <main class="container-fluid">

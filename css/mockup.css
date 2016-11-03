@@ -8,6 +8,8 @@ img {
 
 header {
   border-bottom: 3px solid black;
+  margin-top: 5px;
+  position: fixed;
 }
 
 .column {
@@ -23,4 +25,9 @@ header {
 #chirpLogo {
   width: 20%;
   height: 20%;
+}
+
+#profilePic {
+  width: 35px;
+  border-radius: 4px;
 }

@@ -3,6 +3,8 @@ img{  width: 100%; }
 
 header {
     border-bottom: 3px solid black;
+    margin-top: 5px;
+    position: fixed;
 }
 .column {
     border: 1px solid black;
@@ -19,6 +21,8 @@ header {
     height: 20%;
 }
 
-#user{
 
+#profilePic{
+    width: 35px;
+    border-radius: 4px;
 }
