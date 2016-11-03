@@ -1,7 +1,7 @@
 var signup = document.querySelector('#signup')
 // TODO: Mock Signup Response
-// signup.addEventListener('click', signupHandler)
-signup.addEventListener('click', mockResponse)
+signup.addEventListener('click', signupHandler)
+// signup.addEventListener('click', mockResponse)
 
 function signupHandler() {
     var email = document.querySelector('#email').value
@@ -9,7 +9,7 @@ function signupHandler() {
     var name = document.querySelector('#name').value
     var avatar = document.querySelector('#avatar').value
 
-    fetch('https://d3459c34.ngrok.io/users', {
+    fetch('https://d3459c34.ngrok.io/api/signup', {
         body: JSON.stringify({
             email: email,
             password: password,
@@ -48,7 +48,7 @@ function signedupHandler(response){
         sessionStorage.setItem('chirp-api-token', response.user.api_token)
         // TODO: Add redirect after sign up
         console.log('signed up:', response)
-        // window.location.href = '/photos.html'
+        window.location.href = '/chirp.html'
     } else {
         response.forEach(function(error) {
             var errorDiv = document.createElement('div')

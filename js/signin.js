@@ -1,13 +1,13 @@
 var signin = document.querySelector('#signin')
 // TODO: Mock Signin Response
-// signin.addEventListener('click', signinHandler)
-signin.addEventListener('click', mockResponse)
+signin.addEventListener('click', signinHandler)
+// signin.addEventListener('click', mockResponse)
 
 function signinHandler() {
     var email = document.querySelector('#email').value
     var password = document.querySelector('#password').value
 
-    fetch('https://d3459c34.ngrok.io/log_in', {
+    fetch('https://d3459c34.ngrok.io/api/login', {
         body: JSON.stringify({
             email: email,
             password: password
@@ -44,6 +44,6 @@ function signedinHandler(response) {
     sessionStorage.setItem('chirp-api-token', response.user.api_token)
     // TODO: add redirect after signin
     console.log('signed in: ', response)
-    // window.location.href = '/photos.html'
+    window.location.href = '/chirp.html'
     // document.cookie = 'phetchly=' + response.user.api_token + '; expires=Thu, 2 Aug 2001 20:47:11 UTC'
 }
