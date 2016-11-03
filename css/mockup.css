@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+header {
+  border-bottom: 3px solid black;
+  margin-top: 5px;
+  position: fixed;
+}
+
+.column {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.col-xs-6 {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#chirpLogo {
+  width: 20%;
+  height: 20%;
+}
+
+#profilePic {
+  width: 35px;
+  border-radius: 4px;
+}
