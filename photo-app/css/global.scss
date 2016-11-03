@@ -1,0 +1,24 @@
+* { box-sizing: border-box; }
+img { width: 100%; }
+
+#photoGrid {
+    display: flex;
+}
+
+.photo {
+    width: 28%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    background: #ebebeb;
+    border: 1px solid #d0d0d0;
+    text-align: center
+}
+
+img {
+    margin-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}
