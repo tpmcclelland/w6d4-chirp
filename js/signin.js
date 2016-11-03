@@ -17,9 +17,16 @@ function signinHandler() {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
-    .then(signedinHandler)
-    // TODO: add error handling for fetch in signin
+    .then(function(response) {
+      if(response.ok) {
+        response.json().then(signedinHandler)
+      } else {
+        console.log('Network response was not ok.')
+      }
+    })
+    .catch(function(error) {
+      console.log('There has been a problem with your fetch operation: ' + error.message)
+    })
 }
 
 function mockResponse(){

@@ -21,9 +21,16 @@ function signupHandler() {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
-    .then(signedupHandler)
-    // TODO: add error handling for fetch in signup
+    .then(function(response) {
+      if(response.ok) {
+        response.json().then(signedupHandler)
+      } else {
+        console.log('Network response was not ok.')
+      }
+    })
+    .catch(function(error) {
+      console.log('There has been a problem with your fetch operation: ' + error.message)
+    })
 }
 
 function mockResponse(){
