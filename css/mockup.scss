@@ -16,13 +16,32 @@ header {
     padding-left: 3px;
     padding-right: 3px;
 }
+
+.spacing{
+    margin: 50px;
+}
+
 #chirpLogo {
     width: 20%;
     height: 20%;
 }
 
 
-#profilePic{
+.profilePic{
     width: 35px;
     border-radius: 4px;
+}
+.userPic{
+    margin-top: 10px;
+    width: 50px;
+    border-radius: 4px;
+}
+
+.smallFont{
+    font-size: 10px;
+}
+.chirpInput {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 8px;
 }
