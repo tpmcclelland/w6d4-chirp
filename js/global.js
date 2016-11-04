@@ -1,17 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
-import PhotoUploader from '../components/PhotoUploader'
-import PhotoDisplayer from '../components/PhotoDisplayer'
+// Set initial shared state
+sharedState({
+    user: {
+        api_token: '',
+        name: ''
+    }
+})
 
-window.renderView = function() {
-    ReactDOM.render(
-        <div>
-            <PhotoUploader />
-            <PhotoDisplayer />
-        </div>,
-        document.querySelector('#app')
-    )
-}
+import Welcome from '../components/Welcome'
+import Login from '../components/Login'
+import Signup from '../components/Signup'
 
-renderView()
+ReactDOM.render (
+    <Router history={browserHistory}>
+        <Route path="/" component={Welcome} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        {/* <Route path="/" component={WeatherApp}>
+            <IndexRoute component={CurrentDay} />
+            <Route path="fiveday" component={FiveDayForecast} />
+            <Route path="settings" component={AppSettings} />
+        </Route> */}
+    </Router>
+    , document.getElementById('app')
+)
