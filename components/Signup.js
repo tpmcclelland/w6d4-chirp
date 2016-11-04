@@ -52,10 +52,7 @@ class Signup extends React.Component {
 
             fetch('https://stormy-oasis-22187.herokuapp.com/api/signup', {
                 body: data,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                method: 'POST'
             })
             .then(function(response) {
               if(response.ok) {
