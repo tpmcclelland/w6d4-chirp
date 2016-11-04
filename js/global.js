@@ -11,8 +11,13 @@ sharedState({
         email: '',
         avatar: '',
         api_token: ''
-    }
+    },
+    post: '',
+    posts: [],
+    mock: false
 })
+
+window.sharedState = sharedState
 
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'

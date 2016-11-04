@@ -44,7 +44,7 @@ class Login extends React.Component {
 
         if (!this.state.mock) {
             console.log(this.state)
-            fetch('https://0786c29b.ngrok.io/api/login', {
+            fetch('https://stormy-oasis-22187.herokuapp.com/api/login', {
                 body: JSON.stringify({
                     email: this.state.email,
                     password: this.state.password

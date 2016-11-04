@@ -44,13 +44,14 @@ class Signup extends React.Component {
 
     signup() {
         if(!this.state.mock) {
-            fetch('https://0786c29b.ngrok.io/api/signup', {
-                body: JSON.stringify({
-                    email: this.state.email,
-                    password: this.state.password,
-                    name: this.state.name,
-                    avatar: this.state.avatar
-                }),
+            var data = new FormData()
+            data.append('email', this.state.email)
+            data.append('password', this.state.password)
+            data.append('name', this.state.name)
+            data.append('avatar', this.state.avatar)
+
+            fetch('https://stormy-oasis-22187.herokuapp.com/api/signup', {
+                body: data,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

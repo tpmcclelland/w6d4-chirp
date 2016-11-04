@@ -1,5 +1,6 @@
 import React from 'react'
 import classAutoBind from 'react-helpers/dist/classAutoBind'
+import { browserHistory } from 'react-router'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
 class Header extends React.Component {
@@ -7,6 +8,11 @@ class Header extends React.Component {
         super(props)
         classAutoBind(this)
         this.state = sharedState()
+    }
+
+    handleLogout() {
+        sessionStorage.clear();
+        browserHistory.push('/')
     }
 
     render() {
@@ -20,6 +26,7 @@ class Header extends React.Component {
                 <span className="input-group-btn">
                     {/* <!-- TODO: Change from button to icon without borders --> */}
                   <button className="btn btn-default" type="button">Search</button>
+                  <button className="btn btn-danger" type="button" onClick={this.handleLogout}>Logout</button>
                 </span>
               </div>
             </div>

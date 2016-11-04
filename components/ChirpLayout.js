@@ -1,6 +1,7 @@
 import React from 'react'
 import classAutoBind from 'react-helpers/dist/classAutoBind'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
+import { browserHistory } from 'react-router'
 
 import Header from './Header'
 import Profile from './Profile'
@@ -14,24 +15,31 @@ class ChirpLayout extends React.Component {
         this.state = sharedState()
     }
 
+    componentDidMount() {
+        var login = sessionStorage.getItem('chirp-api-token');
+        if (!login) {
+            browserHistory.push('/')
+        }
+    }
+
     render() {
-        return <div>
-                <Header />
-                <br />
-                <main className="container spacing">
-                  <div className="row">
-                    <div className="col-xs-3 text-center column">
-                        <Profile />
+            return <div>
+                    <Header />
+                    <br />
+                    <main className="container spacing">
+                      <div className="row">
+                        <div className="col-xs-3 text-center column">
+                            <Profile />
+                        </div>
+                        <div className="col-xs-6 text-center column">
+                            <Timeline />
+                        </div>
+                        <div className="col-xs-3 text-center column">
+                            <People />
+                        </div>
                     </div>
-                    <div className="col-xs-6 text-center column">
-                        <Timeline />
-                    </div>
-                    <div className="col-xs-3 text-center column">
-                        <People />
-                    </div>
-                </div>
-                </main>
-        </div>
+                    </main>
+            </div>
     }
 }
 
