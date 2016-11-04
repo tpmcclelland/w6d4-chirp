@@ -8,8 +8,9 @@ img {
 
 header {
   border-bottom: 3px solid black;
-  margin-top: 5px;
+  border-shadow: 10%;
   position: fixed;
+  background-color: #e6e0dc;
 }
 
 #chirpLogo {

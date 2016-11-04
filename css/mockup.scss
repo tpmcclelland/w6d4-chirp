@@ -5,6 +5,8 @@ header {
     border-bottom: 3px solid black;
     margin-top: 5px;
     position: fixed;
+    background-color: rgb(230, 224, 220);
+
 }
 .column {
     border: 1px solid black;
@@ -39,4 +41,9 @@ header {
     text-overflow: ellipsis;
     overflow: hidden;
     padding: 8px;
+}
+
+.followPic {
+    margin-top: -10px;
+    padding-bottom: 20px;
 }

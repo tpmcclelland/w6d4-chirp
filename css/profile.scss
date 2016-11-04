@@ -3,8 +3,9 @@ img { width: 100%;}
 
 header {
     border-bottom: 3px solid black;
-    margin-top: 5px;
+    border-shadow: 10%;
     position: fixed;
+    background-color: rgb(230, 224, 220);
 }
 
 #chirpLogo {
