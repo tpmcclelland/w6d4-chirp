@@ -6,20 +6,25 @@ import { sharedState, attachSharedState, detachSharedState } from 'react-helpers
 // Set initial shared state
 sharedState({
     user: {
-        api_token: '',
-        name: ''
+        id: '',
+        name: '',
+        email: '',
+        avatar: '',
+        api_token: ''
     }
 })
 
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
+import Chirp from '../components/Chirp'
 
 ReactDOM.render (
     <Router history={browserHistory}>
         <Route path="/" component={Welcome} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/chirp" component={Chirp} />
         {/* <Route path="/" component={WeatherApp}>
             <IndexRoute component={CurrentDay} />
             <Route path="fiveday" component={FiveDayForecast} />

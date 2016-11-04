@@ -9,13 +9,11 @@ class Signup extends React.Component {
         classAutoBind(this)
         // this.state = sharedState()
         this.state = {
-            user: {
-                email: 'me@me.com',
-                password: '123456',
-                name: '',
-                avatar: ''
-            },
-            mock: true
+            email: '',
+            password: '',
+            name: '',
+            avatar: '',
+            mock: false
         }
     }
 
@@ -31,7 +29,11 @@ class Signup extends React.Component {
     mockResponse() {
         var response = {
             user: {
-                api_token: 99999999999
+                id: 1,
+                name: 'Tom',
+                email: 'me@me.com',
+                avatar: '',
+                api_token: 'xxxxxxxxxxxxx'
             }
         }
 
@@ -40,12 +42,12 @@ class Signup extends React.Component {
 
     signup() {
         if(!this.state.mock) {
-            fetch('https://d3459c34.ngrok.io/api/signup', {
+            fetch('https://0786c29b.ngrok.io/api/signup', {
                 body: JSON.stringify({
-                    email: this.state.user.email,
-                    password: this.state.user.password,
-                    name: this.state.user.name,
-                    avatar: this.state.user.avatar
+                    email: this.state.email,
+                    password: this.state.password,
+                    name: this.state.name,
+                    avatar: this.state.avatar
                 }),
                 method: 'POST',
                 headers: {
@@ -54,11 +56,12 @@ class Signup extends React.Component {
             })
             .then(function(response) {
               if(response.ok) {
-                response.json().then(signedUpHandler)
+                return response.json()
               } else {
-                console.log('Network response was not ok.')
+                throw 'Network response was not ok.'
               }
             })
+            .then(this.signedUpHandler)
             .catch(function(error) {
               console.log('There has been a problem with your fetch operation: ' + error.message)
             })
@@ -70,16 +73,22 @@ class Signup extends React.Component {
     signedUpHandler(response){
         // response = ['error 1', 'error 2']
         // response.user = undefined
+        console.log(this.state)
 
         if(typeof response.user != 'undefined') {
             sessionStorage.setItem('chirp-api-token', response.user.api_token)
+            sessionStorage.setItem('chirp-user-id', response.user.id)
             sharedState({
                 user: {
+                    id: response.user.id,
+                    name: response.user.name,
+                    email: response.user.email,
+                    avatar: response.user.avatar,
                     api_token: response.user.api_token
                 }})
             // TODO: Add redirect after sign up
             console.log('signed up:', response)
-            browserHistory.push('/?signedup=true')
+            browserHistory.push('/chirp?signedup=true')
         } else {
             response.forEach(function(error) {
                 var errorDiv = document.createElement('div')
@@ -103,19 +112,19 @@ class Signup extends React.Component {
                 <br/>
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name" className="form-control" required/>
+                    <input type="text" id="name" name="name" className="form-control" required value={this.state.name} onChange={(e) => this.setState({name:e.target.value})}/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="avatar">Avatar</label>
-                    <input type="file" id="avatar" name="avatar" className="form-control" required/>
+                    <input type="file" id="avatar" name="avatar" className="form-control" required onChange={(e) => this.setState({avatar:e.target.files[0]})}/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" className="form-control" required/>
+                    <input type="email" id="email" name="email" className="form-control" required value={this.state.email} onChange={(e) => this.setState({email:e.target.value})}/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" className="form-control" required/>
+                    <input type="password" id="password" name="password" className="form-control" required value={this.state.password} onChange={(e) => this.setState({password:e.target.value})}/>
                   </div>
                   <div className="form-group">
                     <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>

@@ -9,11 +9,9 @@ class Login extends React.Component {
         classAutoBind(this)
         // this.state = sharedState()
         this.state = {
-            user: {
-                email: 'me@me.com',
-                password: '123456'
-            },
-            mock: true
+            email: '',
+            password: '',
+            mock: false
         }
     }
 
@@ -29,7 +27,11 @@ class Login extends React.Component {
     mockResponse() {
         var response = {
             user: {
-                api_token: 99999999999
+                id: 1,
+                name: 'Tom',
+                email: 'me@me.com',
+                avatar: '',
+                api_token: 'xxxxxxxxxxxxx'
             }
         }
 
@@ -39,10 +41,11 @@ class Login extends React.Component {
     login() {
 
         if (!this.state.mock) {
+            console.log(this.state)
             fetch('https://0786c29b.ngrok.io/api/login', {
                 body: JSON.stringify({
-                    email: this.state.user.email,
-                    password: this.state.user.password
+                    email: this.state.email,
+                    password: this.state.password
                 }),
                 method: 'POST',
                 headers: {
@@ -51,11 +54,11 @@ class Login extends React.Component {
             })
             .then(function(response) {
               if(response.ok) {
-                response.json().then(loggedInHandler)
+                return response.json()
               } else {
-                console.log('Network response was not ok.')
-              }
+                  throw 'Network response was not ok.'              }
             })
+            .then(this.loggedInHandler)
             .catch(function(error) {
               console.log('There has been a problem with your fetch operation: ' + error.message)
             })
@@ -67,17 +70,23 @@ class Login extends React.Component {
     loggedInHandler(response) {
         // response = ['error 1', 'error 2']
         // response.user = undefined
+        console.log(typeof response.user)
 
         if(typeof response.user != 'undefined') {
             sessionStorage.setItem('chirp-api-token', response.user.api_token)
+            sessionStorage.setItem('chirp-user-id', response.user.id)
             sharedState({
                 user: {
+                    id: response.user.id,
+                    name: response.user.name,
+                    email: response.user.email,
+                    avatar: response.user.avatar,
                     api_token: response.user.api_token
                 }})
             // TODO: add redirect after signin
             console.log('logged in: ', response)
             // window.location.href = '/chirp.html'
-            browserHistory.push('/?loggedin=true')
+            browserHistory.push('/chirp?loggedin=true')
             // document.cookie = 'phetchly=' + response.user.api_token + '; expires=Thu, 2 Aug 2001 20:47:11 UTC'
         } else {
             response.forEach(function(error) {
@@ -93,6 +102,18 @@ class Login extends React.Component {
         this.login()
     }
 
+    handleEmailChange(e) {
+        this.setState({
+            email: e.target.value
+            })
+    }
+
+    handlePasswordChange(e) {
+        this.setState({
+                password: e.target.value
+            })
+    }
+
     render() {
         // TODO: Login: Add the rest of the form bindings
         return <div className="well">
@@ -102,11 +123,11 @@ class Login extends React.Component {
                   <br/>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" className="form-control" required/>
+                    <input type="email" name="email" className="form-control" required value={this.state.email} onChange={this.handleEmailChange}/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" className="form-control" required/>
+                    <input type="password" name="password" className="form-control" required value={this.state.password} onChange={this.handlePasswordChange}/>
                   </div>
                   <div className="form-group">
                       <button id="signin" type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Log In</button>
