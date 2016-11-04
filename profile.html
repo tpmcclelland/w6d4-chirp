@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile Mockup</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Stylesheets go here. -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/profile.css" />
+</head>
+<body>
+  <header class="row">
+    <div class=" col-xs-3 col-xs-offset-5">
+      <img id="chirpLogo" src="./img/chirp-logo.png" alt="Chirp Logo" />
+    </div>
+    <div id="searchBar" class="col-xs-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Find Interesting People...">
+        <span class="input-group-btn">
+            <!-- TODO: Change from button to icon without borders -->
+          <button class="btn btn-default" type="button">Search</button>
+        </span>
+      </div>
+    </div>
+    <div class="col-xs-1">
+      <img class="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
+    </div>
+  </header>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 profile pushDown">
+      <img class="userPic center-block" src="https://robohash.org/jeff" alt="Jeff Bumgardner Profile Pic" />
+      <br />
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="center"> Jeff Bumgardner</div>
+          <br />
+          <div class="col-xs-4">
+            <div>Chirps</div>
+            <div>5,000</div>
+          </div>
+          <div class="col-xs-4">
+            <div>Following</div>
+            <div>392</div>
+          </div>
+          <div class="col-xs-4">
+            <div>Followers</div>
+            <div>N/A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+<!-- TODO: import only THIS users chirps (or posts) below -->
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 post">
+      <p class="chirpInput">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      </p>
+      <div class="smallFont"> 1 hr</div>
+      <hr />
+      <p class="chirpInput">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      </p>
+      <div class="smallFont"> 1 hr</div>
+      <hr />
+      <p class="chirpInput">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      </p>
+      <div class="smallFont"> 1 hr</div>
+      <hr />
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Scripts go here. -->
+  <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
+  <script src="https://use.fontawesome.com/9df289b211.js"></script>
+
+</body>
+</html>
