@@ -1,0 +1,51 @@
+* { box-sizing: border-box;}
+img { width: 100%;}
+
+header {
+    border-bottom: 3px solid black;
+    border-shadow: 10%;
+    position: fixed;
+    background-color: rgb(230, 224, 220);
+}
+
+#chirpLogo {
+    width: 20%;
+    height: 20%;
+}
+
+.profilePic{
+    width: 35px;
+}
+
+.pushDown {
+    margin-top: 50px;
+}
+
+.userPic{
+    margin-top: 10px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.center {
+    text-align: center;
+}
+
+.profile {
+    margin-top: 65px;
+    border: 1px solid black;
+    border-radius: 4px;
+    border-style: dotted;
+}
+
+.smallFont{
+    font-size: 10px;
+    padding-bottom: 5px;
+}
+
+.post {
+    border: 1px solid black;
+    border-radius: 4px;
+    border-style: dotted;
+}

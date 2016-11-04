@@ -16,22 +16,26 @@
     </div>
     <div id="searchBar" class="col-xs-3">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Chirp..">
+        <input type="text" class="form-control" placeholder="Find Interesting People...">
         <span class="input-group-btn">
             <!-- TODO: Change from button to icon without borders -->
-          <button class="btn btn-default" type="button">Chirp!</button>
+          <button class="btn btn-default" type="button">Search</button>
         </span>
       </div>
     </div>
     <div class="col-xs-1">
-      <img class="profilePic" src="http://unsplash.it/200?image=100" alt="Profile Picture" />
+      <img class="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
     </div>
   </header>
   <br />
+
+
   <main class="container spacing">
     <div class="row">
+
+      <!-- beginning of left profile section -->
       <div id="user" class="col-xs-3 text-center column">
-        <img class="profilePic" src="http://unsplash.it/200?image=100" alt="Profile Picture" />
+        <img class="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
           <div> Jeff Bumgardner</div>
           <span>@JeffUsername</span>
           <div class="row">
@@ -48,23 +52,28 @@
               <div>N/A</div>
             </div>
           </div>
+          <!-- end of left profile section -->
       </div>
+
+      <!-- beginning of chirp/post column -->
       <div id="chirping" class="col-xs-6 text-center column">
         <div class="list-unstyled">
           <div class="row">
             <div class="col-xs-2">
-              <img class="profilePic" src="http://unsplash.it/200?image=100" alt="Profile Picture" />
+              <img class="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
             </div>
             <div class="col-xs-9 input-group">
               <input type="text" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
+                <!-- TODO: put chirp icon in text area that sends the post body -->
+              <button class="btn btn-default" type="button">Post</button>
               </span>
           </div>
+          <hr />
         </div>
         <div class="row">
           <div class="col-xs-3">
-            <img class="userPic" src="http://unsplash.it/200?image=23" alt="Jeff Bumgardner Profile Pic" />
+            <img class="userPic" src="https://robohash.org/jeff" alt="Jeff Bumgardner Profile Pic" />
           </div>
           <div class="col-xs-6">
             <div class="row smallFont">
@@ -73,15 +82,21 @@
             </div>
           </div><br />
           <div class="row">
-            <p class="chirpInput">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            </p>
+            <div class="col-xs-8 col-xs-offset-2">
+              <p class="chirpInput">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              </p>
+            </div>
           </div>
         </div>
+        <hr />
 
+        <!-- end of chirp/post section with one sample chirp/post and chirp/post input field above -->
+
+<!-- below are multiple mockups for sample chirp/posts -->
         <div class="row">
           <div class="col-xs-3">
-            <img class="userPic" src="http://unsplash.it/200?image=24" alt="Tom McClelland Profile Pic" />
+            <img class="userPic" src="https://robohash.org/tom" alt="Tom McClelland Profile Pic" />
           </div>
           <div class="col-xs-6">
             <div class="row smallFont">
@@ -90,15 +105,18 @@
             </div>
           </div><br />
           <div class="row">
-            <p class="chirpInput">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            </p>
+            <div class="col-xs-8 col-xs-offset-2">
+              <p class="chirpInput">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              </p>
+            </div>
           </div>
         </div>
+        <hr />
 
         <div class="row">
           <div class="col-xs-3">
-            <img class="userPic" src="http://unsplash.it/200?image=25" alt="Keith Brooks Profile Pic" />
+            <img class="userPic" src="https://robohash.org/keith" alt="Keith Brooks Profile Pic" />
           </div>
           <div class="col-xs-6">
             <div class="row smallFont">
@@ -107,30 +125,42 @@
             </div>
           </div><br />
           <div class="row">
-            <p class="chirpInput">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            </p>
+            <div class="col-xs-8 col-xs-offset-2">
+              <p class="chirpInput">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              </p>
+            </div>
           </div>
         </div>
-
+        <hr />
 
         </div>
       </div>
+
+
+      <!-- below is right column for following people called "interesting people" template -->
+
       <div id="following" class="col-xs-3 text-center column">
-        <h1>Follow Me!</h1>
+        <h2>Interesting People</h2>
         <div class="row">
           <div class="col-xs-3">
-            <img class="userPic" src="http://unsplash.it/200?image=25" alt="Keith Brooks Profile Pic" />
+            <img class="followPic" src="https://robohash.org/keith" alt="Keith Smith Profile Pic" />
           </div>
           <div class="col-xs-6">
             <div class="row smallFont">
                 <div class="col-xs-4 col-xs-offset-1"><strong>Keith Smith</strong></div>
-                <div class="col-xs-4 col-xs-offset-1"> 1 hr</div>
+                <div class="col-xs-4 col-xs-offset-1">
+                  <!-- TODO: add plus icon next to follow -->
+                  <button class="btn btn-primary btn-success">follow</button>
+                </div>
             </div>
-          </div><br />
+          </div>
         </div>
 
       </div>
+<!-- end of following interesting people section -->
+
+
     </div>
 
   </main>
