@@ -5,7 +5,7 @@ img { width: 100%; }
     display: flex;
 }
 
-h1 {
+.welcome-header-color {
     color: #50E3C2;
 }
 
@@ -27,10 +27,56 @@ h1 {
     width: 60px;
 }
 
-img {
-    margin-bottom: 10px;
+// *****************Styles from Mockup
+
+header {
+    border-bottom: 3px solid black;
+    margin-top: 5px;
+    position: fixed;
+    background-color: rgb(230, 224, 220);
+    padding: 10px;
+
+}
+.column {
+    border: 1px solid black;
+    //get spacing between columns
+    border-radius: 4px;
 }
 
-span {
-    font-weight: bold;
+.spacing{
+    margin-top: 80px;
+}
+
+#chirpLogo {
+    width: 20%;
+    height: 20%;
+}
+
+
+.profilePic{
+    width: 35px;
+    border-radius: 4px;
+}
+.userPic{
+    margin-top: 10px;
+    width: 50px;
+    border-radius: 4px;
+}
+
+.smallFont{
+    font-size: 10px;
+}
+.chirpInput {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.followPic {
+    margin-top: -10px;
+    padding-bottom: 20px;
+}
+
+#chirping {
+    padding-top: 15px;
 }

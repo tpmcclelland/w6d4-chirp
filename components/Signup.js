@@ -3,6 +3,8 @@ import { Link, browserHistory} from 'react-router'
 import classAutoBind from 'react-helpers/dist/classAutoBind'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
+import WelcomeLayout from './WelcomeLayout'
+
 class Signup extends React.Component {
     constructor(props) {
         super(props)
@@ -105,34 +107,36 @@ class Signup extends React.Component {
 
     render() {
         // TODO: Signup: Add the rest of the form bindings
-        return  <div className="well">
-                <h2>Sign Up</h2>
-                <br/>
-                <div id="errors"></div>
-                <br/>
-                  <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name" className="form-control" required value={this.state.name} onChange={(e) => this.setState({name:e.target.value})}/>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="avatar">Avatar</label>
-                    <input type="file" id="avatar" name="avatar" className="form-control" required onChange={(e) => this.setState({avatar:e.target.files[0]})}/>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" className="form-control" required value={this.state.email} onChange={(e) => this.setState({email:e.target.value})}/>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" className="form-control" required value={this.state.password} onChange={(e) => this.setState({password:e.target.value})}/>
-                  </div>
-                  <div className="form-group">
-                    <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>
-                  </div>
-                  <div className="form-group">
-                      <Link to="/" className="btn btn-danger btn-block">Cancel </Link>
-                  </div>
-            </div>
+        return  <WelcomeLayout>
+                    <div className="well">
+                            <h2>Sign Up</h2>
+                            <br/>
+                            <div id="errors"></div>
+                            <br/>
+                              <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input type="text" id="name" name="name" className="form-control" required value={this.state.name} onChange={(e) => this.setState({name:e.target.value})}/>
+                              </div>
+                              <div className="form-group">
+                                <label htmlFor="avatar">Avatar</label>
+                                <input type="file" id="avatar" name="avatar" className="form-control" required onChange={(e) => this.setState({avatar:e.target.files[0]})}/>
+                              </div>
+                              <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input type="email" id="email" name="email" className="form-control" required value={this.state.email} onChange={(e) => this.setState({email:e.target.value})}/>
+                              </div>
+                              <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" id="password" name="password" className="form-control" required value={this.state.password} onChange={(e) => this.setState({password:e.target.value})}/>
+                              </div>
+                              <div className="form-group">
+                                <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>
+                              </div>
+                              <div className="form-group">
+                                  <Link to="/" className="btn btn-danger btn-block">Cancel </Link>
+                              </div>
+                        </div>
+        </WelcomeLayout>
     }
 }
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import classAutoBind from 'react-helpers/dist/classAutoBind'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
+import WelcomeLayout from './WelcomeLayout'
+
 class Welcome extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +23,8 @@ class Welcome extends React.Component {
     }
 
     render() {
-        return <div className="well">
+        return <WelcomeLayout>
+                <div className="well">
                     <img className="img-responsive logo" src="../img/chirp-logo.png" alt="logo" />
                     <br/><br/><br/>
                     <div className="form-group">
@@ -39,6 +42,7 @@ class Welcome extends React.Component {
                         </div>
                     </div>
                 </div>
+        </WelcomeLayout>
     }
 }
 

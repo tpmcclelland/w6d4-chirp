@@ -10,7 +10,7 @@ img {
   display: flex;
 }
 
-h1 {
+.welcome-header-color {
   color: #50E3C2;
 }
 
@@ -32,10 +32,54 @@ h1 {
   width: 60px;
 }
 
-img {
-  margin-bottom: 10px;
+header {
+  border-bottom: 3px solid black;
+  margin-top: 5px;
+  position: fixed;
+  background-color: #e6e0dc;
+  padding: 10px;
 }
 
-span {
-  font-weight: bold;
+.column {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.spacing {
+  margin-top: 80px;
+}
+
+#chirpLogo {
+  width: 20%;
+  height: 20%;
+}
+
+.profilePic {
+  width: 35px;
+  border-radius: 4px;
+}
+
+.userPic {
+  margin-top: 10px;
+  width: 50px;
+  border-radius: 4px;
+}
+
+.smallFont {
+  font-size: 10px;
+}
+
+.chirpInput {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.followPic {
+  margin-top: -10px;
+  padding-bottom: 20px;
+}
+
+#chirping {
+  padding-top: 15px;
 }

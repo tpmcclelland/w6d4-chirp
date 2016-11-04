@@ -3,6 +3,8 @@ import { Link, browserHistory } from 'react-router'
 import classAutoBind from 'react-helpers/dist/classAutoBind'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
+import WelcomeLayout from './WelcomeLayout'
+
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -116,26 +118,28 @@ class Login extends React.Component {
 
     render() {
         // TODO: Login: Add the rest of the form bindings
-        return <div className="well">
-                  <h2>Login</h2>
-                  <br/>
-                  <div id="errors"></div>
-                  <br/>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" className="form-control" required value={this.state.email} onChange={this.handleEmailChange}/>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" className="form-control" required value={this.state.password} onChange={this.handlePasswordChange}/>
-                  </div>
-                  <div className="form-group">
-                      <button id="signin" type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Log In</button>
-                  </div>
-                  <div className="form-group">
-                    <Link to="/" className="btn btn-danger btn-block">Cancel</Link>
-                </div>
-            </div>
+        return <WelcomeLayout>
+                <div className="well">
+                          <h2>Login</h2>
+                          <br/>
+                          <div id="errors"></div>
+                          <br/>
+                          <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email" className="form-control" required value={this.state.email} onChange={this.handleEmailChange}/>
+                          </div>
+                          <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" name="password" className="form-control" required value={this.state.password} onChange={this.handlePasswordChange}/>
+                          </div>
+                          <div className="form-group">
+                              <button id="signin" type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Log In</button>
+                          </div>
+                          <div className="form-group">
+                            <Link to="/" className="btn btn-danger btn-block">Cancel</Link>
+                        </div>
+                    </div>
+        </WelcomeLayout>
     }
 }
 

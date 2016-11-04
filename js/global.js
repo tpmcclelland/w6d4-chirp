@@ -17,14 +17,14 @@ sharedState({
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
-import Chirp from '../components/Chirp'
+import ChirpLayout from '../components/ChirpLayout'
 
 ReactDOM.render (
     <Router history={browserHistory}>
         <Route path="/" component={Welcome} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/chirp" component={Chirp} />
+        <Route path="/chirp" component={ChirpLayout} />
         {/* <Route path="/" component={WeatherApp}>
             <IndexRoute component={CurrentDay} />
             <Route path="fiveday" component={FiveDayForecast} />
