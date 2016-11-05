@@ -94,20 +94,17 @@
 	    user = JSON.parse(sessionUser);
 	}
 
+	var path = window.location.href.includes('github') ? '/w6d4-chirp/' : '/';
+
 	(0, _sharedState.sharedState)({
 	    user: user,
 	    posts: [],
 	    mock: false,
-	    api: 'https://stormy-oasis-22187.herokuapp.com'
+	    api: 'https://stormy-oasis-22187.herokuapp.com',
+	    path: path
 	});
 
 	window.sharedState = _sharedState.sharedState;
-
-	var path = '/';
-
-	if (window.location.href.includes('github')) {
-	    path = '/w6d4-chirp/';
-	}
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
@@ -27264,6 +27261,8 @@
 
 	var _reactRouter = __webpack_require__(172);
 
+	var _sharedState = __webpack_require__(235);
+
 	var _WelcomeLayout = __webpack_require__(238);
 
 	var _WelcomeLayout2 = _interopRequireDefault(_WelcomeLayout);
@@ -27284,11 +27283,22 @@
 
 	        var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
 
-	        _this.state = {};
+	        _this.state = (0, _sharedState.sharedState)();
 	        return _this;
 	    }
 
 	    _createClass(Welcome, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            // attachSharedState(this, (state) => this.setState({sharedState: state}))
+	            (0, _sharedState.attachSharedState)(this);
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            (0, _sharedState.detachSharedState)(this);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -27312,7 +27322,7 @@
 	                                { className: 'col-sm-6' },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
-	                                    { to: '/signup', className: 'btn btn-success btn-block' },
+	                                    { to: this.state.path + 'signup', className: 'btn btn-success btn-block' },
 	                                    'Sign Up'
 	                                )
 	                            ),
@@ -27321,7 +27331,7 @@
 	                                { className: 'col-sm-6' },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
-	                                    { to: '/login', className: 'btn btn-primary btn-block' },
+	                                    { to: this.state.path + 'login', className: 'btn btn-primary btn-block' },
 	                                    'Log In'
 	                                )
 	                            )
@@ -27532,7 +27542,7 @@
 	                // TODO: add redirect after signin
 	                // console.log('logged in: ', response)
 	                // window.location.href = '/chirp.html'
-	                _reactRouter.browserHistory.push('/chirp');
+	                _reactRouter.browserHistory.push((0, _sharedState.sharedState)().path + 'chirp');
 	                // document.cookie = 'phetchly=' + response.user.api_token + '; expires=Thu, 2 Aug 2001 20:47:11 UTC'
 	            } else {
 	                response.forEach(function (error) {
@@ -27621,7 +27631,7 @@
 	                        { className: 'form-group' },
 	                        _react2.default.createElement(
 	                            _reactRouter.Link,
-	                            { to: '/', className: 'btn btn-danger btn-block' },
+	                            { to: (0, _sharedState.sharedState)().path, className: 'btn btn-danger btn-block' },
 	                            'Cancel'
 	                        )
 	                    )
@@ -27802,7 +27812,7 @@
 	                    user: response.user });
 	                // TODO: Add redirect after sign up
 	                // console.log('signed up:', response)
-	                _reactRouter.browserHistory.push('/chirp?signedup=true');
+	                _reactRouter.browserHistory.push((0, _sharedState.sharedState)().path + 'chirp');
 	            } else {
 	                response.forEach(function (error) {
 	                    var errorDiv = document.createElement('div');
@@ -27898,7 +27908,7 @@
 	                        { className: 'form-group' },
 	                        _react2.default.createElement(
 	                            _reactRouter.Link,
-	                            { to: '/', className: 'btn btn-danger btn-block' },
+	                            { to: (0, _sharedState.sharedState)().path, className: 'btn btn-danger btn-block' },
 	                            'Cancel '
 	                        )
 	                    )
@@ -28086,7 +28096,7 @@
 	        key: 'handleLogout',
 	        value: function handleLogout() {
 	            sessionStorage.clear();
-	            _reactRouter.browserHistory.push('/');
+	            _reactRouter.browserHistory.push(this.state.path);
 	        }
 	    }, {
 	        key: 'render',
