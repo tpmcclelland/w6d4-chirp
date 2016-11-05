@@ -22,7 +22,7 @@ class Welcome extends React.Component {
     render() {
         return <WelcomeLayout>
                 <div className="well">
-                    <img className="img-responsive logo" src="../img/chirp-logo.png" alt="logo" />
+                    <img className="img-responsive logo" src="./img/chirp-logo.png" alt="logo" />
                     <br/><br/><br/>
                     <div className="form-group">
                         <div className="row">

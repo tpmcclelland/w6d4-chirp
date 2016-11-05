@@ -27307,7 +27307,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'well' },
-	                    _react2.default.createElement('img', { className: 'img-responsive logo', src: '../img/chirp-logo.png', alt: 'logo' }),
+	                    _react2.default.createElement('img', { className: 'img-responsive logo', src: './img/chirp-logo.png', alt: 'logo' }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
