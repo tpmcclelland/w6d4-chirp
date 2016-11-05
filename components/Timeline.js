@@ -7,12 +7,14 @@ class Timeline extends React.Component {
     constructor(props) {
         super(props)
         classAutoBind(this)
-        this.state = sharedState()
+        this.state = {
+            post: ''
+        }
     }
 
     componentDidMount() {
-        // attachSharedState(this, (state) => this.setState({sharedState: state}))
-        attachSharedState(this)
+        attachSharedState(this, (state) => this.setState({sharedState: state}))
+        // attachSharedState(this)
         this.getPosts()
     }
 
@@ -108,7 +110,7 @@ class Timeline extends React.Component {
     }
 
     handlePostChange(e) {
-        sharedState({
+        this.setState({
             post: e.target.value
             })
     }
@@ -121,11 +123,11 @@ class Timeline extends React.Component {
 
     render() {
         // console.log(this.state.posts)
-        var Posts = this.state.posts.map((post, i) => {
+        var Posts = sharedState().posts.map((post, i) => {
             return <Post post={post} key={i} api={sharedState().api} />
         })
 
-        var imageSrc = this.state.api + this.state.user.avatar
+        var imageSrc = sharedState().api + sharedState().user.avatar
 
         return  <div id="chirping">
               <div className="list-unstyled">

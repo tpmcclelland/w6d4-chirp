@@ -20,8 +20,27 @@ class Profile extends React.Component {
         detachSharedState(this)
     }
 
+    getPostCount() {
+        return sharedState().posts.reduce(function(previous, current) {
+            if (current.user.id === sharedState().user.id) {
+                return ++previous
+            }
+        }, 0)
+    }
+
+    getFollowingCount() {
+        return sharedState().posts.reduce(function(previous, current) {
+            if (current.user.id.following) {
+                return previous++
+            } else {
+                return previous
+            }
+        }, 0)
+    }
+
     render() {
       var imageSrc = this.state.api + this.state.user.avatar
+      console.log('render')
       return <div id="user">
                 <img className="profilePic" src={imageSrc} alt="Profile Picture" />
                   <div>{this.state.user.name}</div>
@@ -29,11 +48,11 @@ class Profile extends React.Component {
                   <div className="row">
                     <div className="col-xs-4">
                       <div>Chirps</div>
-                      <div>5,000</div>
+                      <div>{this.getPostCount()}</div>
                     </div>
                     <div className="col-xs-4">
                       <div>Following</div>
-                      <div>392</div>
+                      <div>{this.getFollowingCount()}</div>
                     </div>
                     <div className="col-xs-4">
                       <div>Followers</div>

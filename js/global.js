@@ -19,7 +19,6 @@ if (sessionUser) {
 
 sharedState({
     user: user,
-    post: '',
     posts: [],
     mock: false,
     api: 'https://stormy-oasis-22187.herokuapp.com'
