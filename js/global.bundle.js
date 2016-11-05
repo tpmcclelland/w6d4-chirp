@@ -109,9 +109,9 @@
 	    _reactRouter.Router,
 	    { history: _reactRouter.browserHistory },
 	    _react2.default.createElement(_reactRouter.Route, { path: path, component: _Welcome2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: path + 'login', component: _Login2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: path + 'signup', component: _Signup2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: path + 'chirp', component: _ChirpLayout2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/chirp', component: _ChirpLayout2.default })
 	), document.getElementById('app'));
 
 /***/ },

@@ -35,15 +35,15 @@ var path = '/'
 
 if (window.location.href.includes('github')) {
     path = '/w6d4-chirp/'
-}   
+}
 
 ReactDOM.render (
 
     <Router history={browserHistory}>
         <Route path={path} component={Welcome} />
-        <Route path={path + 'login'} component={Login} />
-        <Route path={path + 'signup'} component={Signup} />
-        <Route path={path + 'chirp'} component={ChirpLayout} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/chirp' component={ChirpLayout} />
         {/* <Route path="/" component={WeatherApp}>
             <IndexRoute component={CurrentDay} />
             <Route path="fiveday" component={FiveDayForecast} />
