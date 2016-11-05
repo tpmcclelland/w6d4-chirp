@@ -26,6 +26,7 @@ sharedState({
 
 window.sharedState = sharedState
 
+import App from '../components/App'
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
@@ -40,10 +41,12 @@ if (window.location.href.includes('github')) {
 ReactDOM.render (
 
     <Router history={browserHistory}>
-        <Route path={path} component={Welcome} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/chirp' component={ChirpLayout} />
+        <Route path={path} component={App} >
+            <IndexRoute component={Welcome} />
+            <Route path='login' component={Login} />
+            <Route path='signup' component={Signup} />
+            <Route path='chirp' component={ChirpLayout} />
+        </Route>
         {/* <Route path="/" component={WeatherApp}>
             <IndexRoute component={CurrentDay} />
             <Route path="fiveday" component={FiveDayForecast} />

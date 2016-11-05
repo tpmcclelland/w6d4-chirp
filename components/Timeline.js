@@ -102,6 +102,9 @@ class Timeline extends React.Component {
 
 
     postedHandler(response) {
+        this.setState({
+            post: ''
+            })
         this.getPosts()
     }
 
