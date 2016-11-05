@@ -4,17 +4,25 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
 import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
 // Set initial shared state
+var sessionUser = sessionStorage.getItem('chirp-user')
+var user = {
+    id: '',
+    name: '',
+    email: '',
+    avatar: '',
+    api_token: ''
+}
+
+if (sessionUser) {
+    user = JSON.parse(sessionUser)
+}
+
 sharedState({
-    user: {
-        id: '',
-        name: '',
-        email: '',
-        avatar: '',
-        api_token: ''
-    },
+    user: user,
     post: '',
     posts: [],
-    mock: false
+    mock: false,
+    api: 'https://stormy-oasis-22187.herokuapp.com'
 })
 
 window.sharedState = sharedState

@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const Post = (props) => <div className="row">
                 <div className="col-xs-3">
-                  <img className="userPic" src="https://robohash.org/jeff" alt="Jeff Bumgardner Profile Pic" />
+                  <img className="userPic" src={props.api + props.post.user.avatar} alt="Post Profile Pic" />
                 </div>
                 <div className="col-xs-6">
                   <div className="row smallFont">

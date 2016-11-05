@@ -22,6 +22,10 @@ class ChirpLayout extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        detachSharedState(this)
+    }
+
     render() {
             return <div>
                     <Header />

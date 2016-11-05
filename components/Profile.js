@@ -11,11 +11,21 @@ class Profile extends React.Component {
         this.state = sharedState()
     }
 
+    componentDidMount() {
+        // attachSharedState(this, (state) => this.setState({sharedState: state}))
+        attachSharedState(this)
+    }
+
+    componentWillUnmount() {
+        detachSharedState(this)
+    }
+
     render() {
+      var imageSrc = this.state.api + this.state.user.avatar
       return <div id="user">
-                <img className="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
-                  <div> Jeff Bumgardner</div>
-                  <span>@JeffUsername</span>
+                <img className="profilePic" src={imageSrc} alt="Profile Picture" />
+                  <div>{this.state.user.name}</div>
+                  <span>{this.state.user.email}</span>
                   <div className="row">
                     <div className="col-xs-4">
                       <div>Chirps</div>

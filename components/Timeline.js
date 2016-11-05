@@ -37,7 +37,7 @@ class Timeline extends React.Component {
     post() {
         if (!this.state.mock) {
             // console.log(this.state)
-            fetch('https://stormy-oasis-22187.herokuapp.com/api/posts', {
+            fetch(sharedState().api + '/api/posts', {
                 body: JSON.stringify({
                     api_token: sessionStorage.getItem('chirp-api-token'),
                     post: {
@@ -69,7 +69,7 @@ class Timeline extends React.Component {
         if (!this.state.mock) {
             // console.log(this.state)
             var token = sessionStorage.getItem('chirp-api-token')
-            fetch('https://stormy-oasis-22187.herokuapp.com/api/posts?api_token=' + token, {
+            fetch(sharedState().api + '/api/posts?api_token=' + token, {
                 method: 'GET',
                 headers: {
                     // api_token: sessionStorage.getItem('chirp-api-token'),
@@ -122,14 +122,16 @@ class Timeline extends React.Component {
     render() {
         // console.log(this.state.posts)
         var Posts = this.state.posts.map((post, i) => {
-            return <Post post={post} key={i} />
+            return <Post post={post} key={i} api={sharedState().api} />
         })
+
+        var imageSrc = this.state.api + this.state.user.avatar
 
         return  <div id="chirping">
               <div className="list-unstyled">
                 <div className="row">
                   <div className="col-xs-2">
-                    <img className="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
+                    <img className="profilePic" src={imageSrc} alt="Profile Picture" />
                   </div>
                   <div className="col-xs-9 input-group">
                     <input type="text" className="form-control" placeholder="Chirp..." maxLength="160" value={this.state.post} onChange={this.handlePostChange} onKeyPress={this.handleKeyPress}/>

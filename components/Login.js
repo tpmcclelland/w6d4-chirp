@@ -43,8 +43,8 @@ class Login extends React.Component {
     login() {
 
         if (!this.state.mock) {
-            console.log(this.state)
-            fetch('https://stormy-oasis-22187.herokuapp.com/api/login', {
+            // console.log(this.state)
+            fetch(sharedState().api + '/api/login', {
                 body: JSON.stringify({
                     email: this.state.email,
                     password: this.state.password
@@ -72,23 +72,17 @@ class Login extends React.Component {
     loggedInHandler(response) {
         // response = ['error 1', 'error 2']
         // response.user = undefined
-        console.log(typeof response.user)
+        // console.log(typeof response.user)
 
         if(typeof response.user != 'undefined') {
             sessionStorage.setItem('chirp-api-token', response.user.api_token)
-            sessionStorage.setItem('chirp-user-id', response.user.id)
+            sessionStorage.setItem('chirp-user', JSON.stringify(response.user))
             sharedState({
-                user: {
-                    id: response.user.id,
-                    name: response.user.name,
-                    email: response.user.email,
-                    avatar: response.user.avatar,
-                    api_token: response.user.api_token
-                }})
+                user: response.user})
             // TODO: add redirect after signin
-            console.log('logged in: ', response)
+            // console.log('logged in: ', response)
             // window.location.href = '/chirp.html'
-            browserHistory.push('/chirp?loggedin=true')
+            browserHistory.push('/chirp')
             // document.cookie = 'phetchly=' + response.user.api_token + '; expires=Thu, 2 Aug 2001 20:47:11 UTC'
         } else {
             response.forEach(function(error) {
@@ -116,6 +110,12 @@ class Login extends React.Component {
             })
     }
 
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.login()
+        }
+    }
+
     render() {
         // TODO: Login: Add the rest of the form bindings
         return <WelcomeLayout>
@@ -130,7 +130,7 @@ class Login extends React.Component {
                           </div>
                           <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" name="password" className="form-control" required value={this.state.password} onChange={this.handlePasswordChange}/>
+                            <input type="password" name="password" className="form-control" required value={this.state.password} onChange={this.handlePasswordChange} onKeyPress={this.handleKeyPress}/>
                           </div>
                           <div className="form-group">
                               <button id="signin" type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Log In</button>

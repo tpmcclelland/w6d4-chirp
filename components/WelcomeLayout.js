@@ -1,14 +1,9 @@
 import React from 'react'
-import classAutoBind from 'react-helpers/dist/classAutoBind'
-import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
-
-// import Header from './Header'
 
 class WelcomeLayout extends React.Component {
     constructor(props) {
         super(props)
-        classAutoBind(this)
-        this.state = sharedState()
+        this.state = {}
     }
 
     render() {

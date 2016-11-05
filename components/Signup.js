@@ -50,7 +50,7 @@ class Signup extends React.Component {
             data.append('name', this.state.name)
             data.append('avatar', this.state.avatar)
 
-            fetch('https://stormy-oasis-22187.herokuapp.com/api/signup', {
+            fetch(sharedState().api + '/api/signup', {
                 body: data,
                 method: 'POST'
             })
@@ -73,21 +73,15 @@ class Signup extends React.Component {
     signedUpHandler(response){
         // response = ['error 1', 'error 2']
         // response.user = undefined
-        console.log(this.state)
+        // console.log(this.state)
 
         if(typeof response.user != 'undefined') {
             sessionStorage.setItem('chirp-api-token', response.user.api_token)
-            sessionStorage.setItem('chirp-user-id', response.user.id)
+            sessionStorage.setItem('chirp-user', JSON.stringify(response.user))
             sharedState({
-                user: {
-                    id: response.user.id,
-                    name: response.user.name,
-                    email: response.user.email,
-                    avatar: response.user.avatar,
-                    api_token: response.user.api_token
-                }})
+                user: response.user})
             // TODO: Add redirect after sign up
-            console.log('signed up:', response)
+            // console.log('signed up:', response)
             browserHistory.push('/chirp?signedup=true')
         } else {
             response.forEach(function(error) {
@@ -104,36 +98,35 @@ class Signup extends React.Component {
     }
 
     render() {
-        // TODO: Signup: Add the rest of the form bindings
         return  <WelcomeLayout>
-                    <div className="well">
-                            <h2>Sign Up</h2>
-                            <br/>
-                            <div id="errors"></div>
-                            <br/>
-                              <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input type="text" id="name" name="name" className="form-control" required value={this.state.name} onChange={(e) => this.setState({name:e.target.value})}/>
-                              </div>
-                              <div className="form-group">
-                                <label htmlFor="avatar">Avatar</label>
-                                <input type="file" id="avatar" name="avatar" className="form-control" required onChange={(e) => this.setState({avatar:e.target.files[0]})}/>
-                              </div>
-                              <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" id="email" name="email" className="form-control" required value={this.state.email} onChange={(e) => this.setState({email:e.target.value})}/>
-                              </div>
-                              <div className="form-group">
-                                <label htmlFor="password">Password</label>
-                                <input type="password" id="password" name="password" className="form-control" required value={this.state.password} onChange={(e) => this.setState({password:e.target.value})}/>
-                              </div>
-                              <div className="form-group">
-                                <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>
-                              </div>
-                              <div className="form-group">
-                                  <Link to="/" className="btn btn-danger btn-block">Cancel </Link>
-                              </div>
-                        </div>
+            <div className="well">
+                    <h2>Sign Up</h2>
+                    <br/>
+                    <div id="errors"></div>
+                    <br/>
+                      <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input type="text" id="name" name="name" className="form-control" required value={this.state.name} onChange={(e) => this.setState({name:e.target.value})}/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="avatar">Avatar</label>
+                        <input type="file" id="avatar" name="avatar" className="form-control" required onChange={(e) => this.setState({avatar:e.target.files[0]})}/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" className="form-control" required value={this.state.email} onChange={(e) => this.setState({email:e.target.value})}/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" name="password" className="form-control" required value={this.state.password} onChange={(e) => this.setState({password:e.target.value})}/>
+                      </div>
+                      <div className="form-group">
+                        <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>
+                      </div>
+                      <div className="form-group">
+                          <Link to="/" className="btn btn-danger btn-block">Cancel </Link>
+                      </div>
+                </div>
         </WelcomeLayout>
     }
 }

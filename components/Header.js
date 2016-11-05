@@ -10,12 +10,23 @@ class Header extends React.Component {
         this.state = sharedState()
     }
 
+    componentDidMount() {
+        // attachSharedState(this, (state) => this.setState({sharedState: state}))
+        attachSharedState(this)
+    }
+
+    componentWillUnmount() {
+        detachSharedState(this)
+    }
+
     handleLogout() {
         sessionStorage.clear();
         browserHistory.push('/')
     }
 
     render() {
+        var imageSrc = this.state.api + this.state.user.avatar
+
         return <header className="row">
             <div className=" col-xs-3 col-xs-offset-5">
               <img id="chirpLogo" src="./img/chirp-logo.png" alt="Chirp Logo" />
@@ -31,7 +42,7 @@ class Header extends React.Component {
               </div>
             </div>
             <div className="col-xs-1">
-              <img className="profilePic" src="https://robohash.org/jeff" alt="Profile Picture" />
+              <img className="profilePic" src={imageSrc} alt="Profile Picture" />
             </div>
           </header>
     }

@@ -1,25 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
-import classAutoBind from 'react-helpers/dist/classAutoBind'
-import { sharedState, attachSharedState, detachSharedState } from 'react-helpers/dist/sharedState'
 
 import WelcomeLayout from './WelcomeLayout'
 
 class Welcome extends React.Component {
     constructor(props) {
         super(props)
-        classAutoBind(this)
-        // this.state = {}
-        this.state = sharedState()
-    }
-
-    componentDidMount() {
-        // attachSharedState(this, (state) => this.setState({sharedState: state}))
-        attachSharedState(this)
-    }
-
-    componentWillUnmount() {
-        detachSharedState(this)
+        this.state = {}
     }
 
     render() {
