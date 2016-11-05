@@ -17,11 +17,14 @@ if (sessionUser) {
     user = JSON.parse(sessionUser)
 }
 
+const path = window.location.href.includes('github') ? '/w6d4-chirp/' : '/'
+
 sharedState({
     user: user,
     posts: [],
     mock: false,
-    api: 'https://stormy-oasis-22187.herokuapp.com'
+    api: 'https://stormy-oasis-22187.herokuapp.com',
+    path: path
 })
 
 window.sharedState = sharedState
@@ -32,11 +35,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 import ChirpLayout from '../components/ChirpLayout'
 
-var path = '/'
 
-if (window.location.href.includes('github')) {
-    path = '/w6d4-chirp/'
-}
 
 ReactDOM.render (
 

@@ -82,7 +82,7 @@ class Login extends React.Component {
             // TODO: add redirect after signin
             // console.log('logged in: ', response)
             // window.location.href = '/chirp.html'
-            browserHistory.push('/chirp')
+            browserHistory.push(sharedState().path + 'chirp')
             // document.cookie = 'phetchly=' + response.user.api_token + '; expires=Thu, 2 Aug 2001 20:47:11 UTC'
         } else {
             response.forEach(function(error) {
@@ -136,7 +136,7 @@ class Login extends React.Component {
                               <button id="signin" type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Log In</button>
                           </div>
                           <div className="form-group">
-                            <Link to="/" className="btn btn-danger btn-block">Cancel</Link>
+                            <Link to={sharedState().path} className="btn btn-danger btn-block">Cancel</Link>
                         </div>
                     </div>
         </WelcomeLayout>

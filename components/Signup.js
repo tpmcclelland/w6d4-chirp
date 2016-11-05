@@ -82,7 +82,7 @@ class Signup extends React.Component {
                 user: response.user})
             // TODO: Add redirect after sign up
             // console.log('signed up:', response)
-            browserHistory.push('/chirp?signedup=true')
+            browserHistory.push(sharedState().path + 'chirp')
         } else {
             response.forEach(function(error) {
                 var errorDiv = document.createElement('div')
@@ -124,7 +124,7 @@ class Signup extends React.Component {
                         <button id="signup" type="button" className="btn btn-success btn-block" onClick={this.handleClick}>Sign Up</button>
                       </div>
                       <div className="form-group">
-                          <Link to="/" className="btn btn-danger btn-block">Cancel </Link>
+                          <Link to={sharedState().path} className="btn btn-danger btn-block">Cancel </Link>
                       </div>
                 </div>
         </WelcomeLayout>

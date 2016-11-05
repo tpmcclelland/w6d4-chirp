@@ -21,7 +21,7 @@ class Header extends React.Component {
 
     handleLogout() {
         sessionStorage.clear();
-        browserHistory.push('/')
+        browserHistory.push(this.state.path)
     }
 
     render() {
