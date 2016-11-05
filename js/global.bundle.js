@@ -27327,7 +27327,7 @@
 	                        _react2.default.createElement(
 	                            "h1",
 	                            { className: "welcome-header-color" },
-	                            _react2.default.createElement("img", { className: "header-logo", src: "/img/chirp-logo.png", alt: "logo" }),
+	                            _react2.default.createElement("img", { className: "header-logo", src: "img/chirp-logo.png", alt: "logo" }),
 	                            " Chirp"
 	                        ),
 	                        _react2.default.createElement("hr", null),

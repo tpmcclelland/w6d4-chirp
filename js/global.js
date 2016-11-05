@@ -34,7 +34,7 @@ import ChirpLayout from '../components/ChirpLayout'
 var path = '/'
 
 if (window.location.href.includes('github')) {
-    path = 'w6d4-chirp/'
+    path = '/w6d4-chirp/'
 }
 
 ReactDOM.render (
