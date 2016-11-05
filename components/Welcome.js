@@ -17,12 +17,12 @@ class Welcome extends React.Component {
                     <div className="form-group">
                         <div className="row">
                             <div className="col-sm-6">
-                                <Link to="signup" className="btn btn-success btn-block">
+                                <Link to="/signup" className="btn btn-success btn-block">
                                     Sign Up
                                 </Link>
                             </div>
                             <div className="col-sm-6">
-                                <Link to="login" className="btn btn-primary btn-block">
+                                <Link to="/login" className="btn btn-primary btn-block">
                                     Log In
                                 </Link>
                             </div>

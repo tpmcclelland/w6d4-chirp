@@ -27312,7 +27312,7 @@
 	                                { className: 'col-sm-6' },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
-	                                    { to: 'signup', className: 'btn btn-success btn-block' },
+	                                    { to: '/signup', className: 'btn btn-success btn-block' },
 	                                    'Sign Up'
 	                                )
 	                            ),
@@ -27321,7 +27321,7 @@
 	                                { className: 'col-sm-6' },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
-	                                    { to: 'login', className: 'btn btn-primary btn-block' },
+	                                    { to: '/login', className: 'btn btn-primary btn-block' },
 	                                    'Log In'
 	                                )
 	                            )
