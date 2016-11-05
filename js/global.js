@@ -33,7 +33,7 @@ import ChirpLayout from '../components/ChirpLayout'
 
 var path = '/'
 
-if (window.location.href.includes('github.com')) {
+if (window.location.href.includes('github')) {
     path = '/w6d4-chirp/'
 }
 
