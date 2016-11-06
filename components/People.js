@@ -10,6 +10,7 @@ class People extends React.Component {
         classAutoBind(this)
         this.state = {
             // TODO: add whatever Keith will send me for people to follow. Not sure if I can mock up.
+            id: '',
             mock: false,
         }
     }
@@ -36,7 +37,7 @@ mockedResponse() {
     this.handleFollow(response)
 }
 
-    follow(toggle) {
+    follow() {
         // TODO: twill be fired from handleFollow. maybe fetch? if/else statements? use the api key for this (/api/users/:id/follow). mock response would be?
 
         if (!this.state.mock) {
@@ -72,12 +73,28 @@ mockedResponse() {
         }
     }
 
-    handleFollow(){
+    handleFollow(response){
         // TODO: will fire when button is clicked, which will then fire follow() method. if following, then change button text to unfollow. if no following, have text show as follow. need to call on whatever Keith is sending me.
+        if (typeof response.id != 'undefined') {
+            sessionStorage.setItem('chirp-id', response.id)
+            sharedState({
+                id: response.id })
+            browser.history.push('/follow')
+            // should this go there?
+        }
+        else {
+            response.forEach(function(error) {
+                var errorDiv = document.createElement('div')
+                errorDiv.classList.add('alert', 'alert-danger')
+                errorDiv.innerHTML = error
+                document.querySelector('#errors').appendChild(errorDiv)
+            })
+        }
     }
 
     nowFollowingHandler() {
         // TODO: this should tie that users info to my account so that I can access it. sort of like loggedInHandler in Login.js. Will also contain sharedState possibly? Will also need an else parameter in case there is an error. Ask tom about sharedState.
+        this.follow()
     }
 
     render() {
