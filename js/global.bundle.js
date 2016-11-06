@@ -101,7 +101,8 @@
 	    posts: [],
 	    mock: false,
 	    api: 'https://stormy-oasis-22187.herokuapp.com',
-	    path: path
+	    path: path,
+	    people: []
 	});
 
 	window.sharedState = _sharedState.sharedState;
@@ -28199,6 +28200,8 @@
 	        value: function componentDidMount() {
 	            // attachSharedState(this, (state) => this.setState({sharedState: state}))
 	            (0, _sharedState.attachSharedState)(this);
+	            this.getFollowingCount();
+	            this.getPostCount();
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -28208,18 +28211,22 @@
 	    }, {
 	        key: 'getPostCount',
 	        value: function getPostCount() {
+	            // console.log('post count', sharedState().posts, sharedState().user)
 	            return (0, _sharedState.sharedState)().posts.reduce(function (previous, current) {
 	                if (current.user.id === (0, _sharedState.sharedState)().user.id) {
 	                    return ++previous;
+	                } else {
+	                    return previous;
 	                }
 	            }, 0);
 	        }
 	    }, {
 	        key: 'getFollowingCount',
 	        value: function getFollowingCount() {
+	            // console.log('following count', sharedState().posts, sharedState().user)
 	            return (0, _sharedState.sharedState)().posts.reduce(function (previous, current) {
-	                if (current.user.id.following) {
-	                    return previous++;
+	                if (current.user.following) {
+	                    return ++previous;
 	                } else {
 	                    return previous;
 	                }
@@ -28229,7 +28236,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var imageSrc = this.state.api + this.state.user.avatar;
-	            console.log('render');
+	            //   console.log('render profile')
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'user' },
@@ -43027,6 +43034,10 @@
 
 	var _sharedState = __webpack_require__(235);
 
+	var _Person = __webpack_require__(355);
+
+	var _Person2 = _interopRequireDefault(_Person);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43046,6 +43057,8 @@
 	        (0, _classAutoBind2.default)(_this);
 	        _this.state = {
 	            // TODO: add whatever Keith will send me for people to follow. Not sure if I can mock up.
+	            id: '',
+	            following: '',
 	            mock: false
 	        };
 	        return _this;
@@ -43061,6 +43074,7 @@
 	            });
 	            // attachSharedState(this)
 	            // TODO: make request for all people
+	            this.all();
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -43068,16 +43082,86 @@
 	            (0, _sharedState.detachSharedState)(this);
 	        }
 	    }, {
-	        key: 'follow',
-	        value: function follow(toggle) {
-	            // TODO: twill be fired from handleFollow. maybe fetch? if/else statements? use the api key for this (/api/users/:id/follow). mock response would be?
-
+	        key: 'mockedResponse',
+	        value: function mockedResponse() {
+	            var response = [{
+	                name: 'Jeff',
+	                id: 2,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 3,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 4,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 5,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 6,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 7,
+	                following: false
+	            }, {
+	                name: 'Jeff',
+	                id: 8,
+	                following: false
+	            }];
+	            this.handleAll(response);
+	        }
+	    }, {
+	        key: 'all',
+	        value: function all() {
 	            if (!this.state.mock) {
-	                console.log(this.state);
-	                fetch('https://0786c29b.ngrok.io/api/users/:id/follow', {
+	                //   console.log(this.state)
+	                var token = sessionStorage.getItem('chirp-api-token');
+	                fetch((0, _sharedState.sharedState)().api + '/api/all?api_token=' + token, {
+	                    method: 'GET',
+	                    headers: {
+	                        'Content-Type': 'application/json'
+	                    }
+
+	                }).then(function (response) {
+	                    if (response.ok) {
+	                        return response.json();
+	                    } else {
+	                        throw 'Follow response was not okay.';
+	                    }
+	                }).then(this.handleAll).catch(function (error) {
+	                    console.log('There has been an error in your fetch operation: ' + error.message);
+	                });
+	                // TODO: not sure what to do for a version of loggedInHandler.
+	            } else {
+	                this.mockedResponse();
+	            }
+	        }
+	    }, {
+	        key: 'handleAll',
+	        value: function handleAll(response) {
+	            console.log('handleAll ', response);
+	            (0, _sharedState.sharedState)({
+	                people: response.users
+	            });
+	            //  console.log('handleAll ',response)
+	        }
+	    }, {
+	        key: 'follow',
+	        value: function follow(i, id) {
+	            // this.state.mock = false
+	            if (!this.state.mock) {
+	                // console.log(this.state)
+	                fetch((0, _sharedState.sharedState)().api + '/api/users/' + id + '/follow', {
+	                    // fetch(sharedState().api + '/api/users/:id/follow', {
 	                    body: JSON.stringify({
 	                        // TODO: get id from person I want to follow. do I need headers? ask Tom.
-	                        id: this.state.id
+	                        id: id,
+	                        api_token: sessionStorage.getItem('chirp-api-token')
 	                    }),
 	                    method: 'POST',
 	                    headers: {
@@ -43090,23 +43174,55 @@
 	                    } else {
 	                        throw 'Follow response was not okay.';
 	                    }
+	                }).then(this.handleFollow).catch(function (error) {
+	                    console.log('There has been an error in your fetch operation: ' + error.message);
 	                });
 	                // TODO: not sure what to do for a version of loggedInHandler.
+	            } else {
+	                this.mockedResponse();
 	            }
+
+	            // console.log(i, id)
 	        }
+	    }, {
+	        key: 'unfollow',
+	        value: function unfollow() {}
 	    }, {
 	        key: 'handleFollow',
-	        value: function handleFollow() {
-	            // TODO: will fire when button is clicked, which will then fire follow() method. if following, then change button text to unfollow. if no following, have text show as follow. need to call on whatever Keith is sending me.
-	        }
-	    }, {
-	        key: 'nowFollowingHandler',
-	        value: function nowFollowingHandler() {
-	            // TODO: this should tie that users info to my account so that I can access it. sort of like loggedInHandler in Login.js. Will also contain sharedState possibly? Will also need an else parameter in case there is an error. Ask tom about sharedState.
+	        value: function handleFollow(response) {
+	            //   // TODO: will fire when button is clicked, which will then fire follow() method. if following, then change button text to unfollow. if no following, have text show as follow. need to call on whatever Keith is sending me.
+	            //   if (typeof response.id.follow != true) {
+	            //       sessionStorage.setItem('chirp-id', response.id)
+	            //       sharedState({
+	            //           id: response.id })
+	            //       browser.history.push('/api/users/:id/follow')
+	            //       // should this go there?
+	            //   }
+	            //   else {
+	            //       // response.forEach(function(error) {
+	            //       //     var errorDiv = document.createElement('div')
+	            //       //     errorDiv.classList.add('alert', 'alert-danger')
+	            //       //     errorDiv.innerHTML = error
+	            //       //     document.querySelector('#errors').appendChild(errorDiv)
+	            //       // })
+	            //   }
+	            this.all();
+	            // console.log('handleFollow ', response)
+	            (0, _sharedState.sharedState)({
+	                refresh: true
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this3 = this;
+
+	            console.log('render people ', this.state.people);
+	            var People = (0, _sharedState.sharedState)().people.map(function (person, i) {
+	                return _react2.default.createElement(_Person2.default, { person: person, key: i, followed: person.following, api: (0, _sharedState.sharedState)().api, follow: function follow() {
+	                        return _this3.follow(i, person.id);
+	                    } });
+	            });
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'following' },
@@ -43115,41 +43231,7 @@
 	                    null,
 	                    'Interesting People'
 	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-3' },
-	                        _react2.default.createElement('img', { className: 'followPic', src: 'https://robohash.org/keith', alt: 'Keith Smith Profile Pic' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'row smallFont' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'col-xs-4 col-xs-offset-1' },
-	                                _react2.default.createElement(
-	                                    'strong',
-	                                    null,
-	                                    'Keith Smith'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'col-xs-4 col-xs-offset-1' },
-	                                _react2.default.createElement(
-	                                    'button',
-	                                    { id: 'follow', type: 'button', className: 'btn btn-primary btn-success', onClick: this.handleFollow },
-	                                    'follow'
-	                                )
-	                            )
-	                        )
-	                    )
-	                )
+	                People
 	            );
 	        }
 	    }]);
@@ -43158,6 +43240,62 @@
 	}(_react2.default.Component);
 
 	exports.default = People;
+
+/***/ },
+/* 355 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Person = function Person(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "row" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col-xs-3" },
+	      _react2.default.createElement("img", { className: "followPic", src: "https://robohash.org/keith", alt: "Keith Smith Profile Pic" })
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col-xs-6" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "row smallFont" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-xs-4 col-xs-offset-1" },
+	          _react2.default.createElement(
+	            "strong",
+	            null,
+	            props.person.name
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-xs-4 col-xs-offset-1" },
+	          _react2.default.createElement(
+	            "button",
+	            { id: "follow", type: "button", className: props.person.following ? 'btn btn-danger' : 'btn btn-primary', onClick: props.follow },
+	            props.person.following ? 'Unfollow' : 'Follow'
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	exports.default = Person;
 
 /***/ }
 /******/ ]);
