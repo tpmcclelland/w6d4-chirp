@@ -21,7 +21,7 @@ class Profile extends React.Component {
     }
 
     getPostCount() {
-        console.log('post count', sharedState().posts, sharedState().user)
+        // console.log('post count', sharedState().posts, sharedState().user)
         return sharedState().posts.reduce(function(previous, current) {
             if (current.user.id === sharedState().user.id) {
                 return ++previous
@@ -32,7 +32,7 @@ class Profile extends React.Component {
     }
 
     getFollowingCount() {
-        console.log('following count', sharedState().posts, sharedState().user)
+        // console.log('following count', sharedState().posts, sharedState().user)
         return sharedState().posts.reduce(function(previous, current) {
             if (current.user.following) {
                 return ++previous
@@ -44,7 +44,7 @@ class Profile extends React.Component {
 
     render() {
       var imageSrc = this.state.api + this.state.user.avatar
-      console.log('render profile')
+    //   console.log('render profile')
       return <div id="user">
                 <img className="profilePic" src={imageSrc} alt="Profile Picture" />
                   <div>{this.state.user.name}</div>
