@@ -24,6 +24,18 @@ class People extends React.Component {
         detachSharedState(this)
     }
 
+mockedResponse() {
+    var response = {
+        user: {
+            id: 69,
+            name: 'Jeff',
+            avatar: '',
+            api_token: 'xxxxxxxxxxxxx'
+        }
+    }
+    this.handleFollow(response)
+}
+
     follow(toggle) {
         // TODO: twill be fired from handleFollow. maybe fetch? if/else statements? use the api key for this (/api/users/:id/follow). mock response would be?
 
@@ -49,7 +61,14 @@ class People extends React.Component {
                     throw 'Follow response was not okay.'
                 }
             })
+            .then(this.handleFollow)
+            .catch(function(error) {
+                console.log('There has been an error in your fetch operation: ' + error.message)
+            })
             // TODO: not sure what to do for a version of loggedInHandler.
+        }
+        else {
+            this.mockedResponse()
         }
     }
 
