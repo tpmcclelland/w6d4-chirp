@@ -14,7 +14,7 @@ class People extends React.Component {
             id: '',
             following: '',
             mock: false,
-            people: [],
+            // people: [],
         }
     }
 
@@ -171,6 +171,9 @@ handleFollow(response){
       //   }
       this.all()
       // console.log('handleFollow ', response)
+      sharedState({
+         refresh: true
+      })
     }
 
 

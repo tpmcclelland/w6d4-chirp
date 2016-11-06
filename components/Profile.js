@@ -14,6 +14,8 @@ class Profile extends React.Component {
     componentDidMount() {
         // attachSharedState(this, (state) => this.setState({sharedState: state}))
         attachSharedState(this)
+        this.getFollowingCount()
+        this.getPostCount()
     }
 
     componentWillUnmount() {
