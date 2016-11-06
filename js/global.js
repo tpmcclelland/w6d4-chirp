@@ -24,7 +24,8 @@ sharedState({
     posts: [],
     mock: false,
     api: 'https://stormy-oasis-22187.herokuapp.com',
-    path: path
+    path: path,
+    people: []
 })
 
 window.sharedState = sharedState
