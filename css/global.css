@@ -36,6 +36,7 @@ header {
   border-bottom: 3px solid black;
   margin-top: 5px;
   position: fixed;
+  z-index: 10000;
   background-color: #e6e0dc;
   padding: 10px;
 }
