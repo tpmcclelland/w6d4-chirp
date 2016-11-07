@@ -186,6 +186,7 @@ render() {
 )
         return <div id="following">
               <h2>Interesting People</h2>
+              <hr />
               {People}
         </div>
     }

@@ -28,14 +28,13 @@ class Header extends React.Component {
         var imageSrc = this.state.api + this.state.user.avatar
 
         return <header className="row">
-            <div className=" col-xs-3 col-xs-offset-5">
+            <div className=" col-xs-3 col-xs-offset-3">
               <img id="chirpLogo" src="./img/chirp-logo.png" alt="Chirp Logo" />
             </div>
             <div id="searchBar" className="col-xs-3">
               <div className="input-group">
                 <input type="text" className="form-control" placeholder="Find Interesting People..." />
                 <span className="input-group-btn">
-                    {/* <!-- TODO: Change from button to icon without borders --> */}
                   <button className="btn btn-default" type="button">Search</button>
                   <button className="btn btn-danger" type="button" onClick={this.handleLogout}>Logout</button>
                 </span>
