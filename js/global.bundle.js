@@ -28018,7 +28018,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'col-xs-6 text-center column' },
+	                            { className: 'col-xs-6 column' },
 	                            _react2.default.createElement(_Timeline2.default, null)
 	                        ),
 	                        _react2.default.createElement(
@@ -28109,7 +28109,7 @@
 	                { className: 'row' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: ' col-xs-3 col-xs-offset-5' },
+	                    { className: ' col-xs-3 col-xs-offset-3' },
 	                    _react2.default.createElement('img', { id: 'chirpLogo', src: './img/chirp-logo.png', alt: 'Chirp Logo' })
 	                ),
 	                _react2.default.createElement(
@@ -28118,13 +28118,13 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'input-group' },
-	                        _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Find Interesting People...' }),
+	                        _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Find Interesting People...', disabled: true }),
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: 'input-group-btn' },
 	                            _react2.default.createElement(
 	                                'button',
-	                                { className: 'btn btn-default', type: 'button' },
+	                                { className: 'btn btn-default disabled', type: 'button' },
 	                                'Search'
 	                            ),
 	                            _react2.default.createElement(
@@ -28200,8 +28200,6 @@
 	        value: function componentDidMount() {
 	            // attachSharedState(this, (state) => this.setState({sharedState: state}))
 	            (0, _sharedState.attachSharedState)(this);
-	            this.getFollowingCount();
-	            this.getPostCount();
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -28223,9 +28221,9 @@
 	    }, {
 	        key: 'getFollowingCount',
 	        value: function getFollowingCount() {
-	            // console.log('following count', sharedState().posts, sharedState().user)
-	            return (0, _sharedState.sharedState)().posts.reduce(function (previous, current) {
-	                if (current.user.following) {
+	            // console.log('following count', sharedState().people)
+	            return (0, _sharedState.sharedState)().people.reduce(function (previous, current) {
+	                if (current.following) {
 	                    return ++previous;
 	                } else {
 	                    return previous;
@@ -28493,7 +28491,7 @@
 	                    { className: 'list-unstyled' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'row' },
+	                        { className: 'row background-blue' },
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'col-xs-2' },
@@ -28515,6 +28513,7 @@
 	                        ),
 	                        _react2.default.createElement('hr', null)
 	                    ),
+	                    _react2.default.createElement('br', null),
 	                    Posts
 	                )
 	            );
@@ -28552,32 +28551,19 @@
 	    { className: 'row' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'col-xs-3' },
-	      _react2.default.createElement('img', { className: 'userPic', src: props.api + props.post.user.avatar, alt: 'Post Profile Pic' })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-xs-6' },
+	      { className: 'col-xs-12' },
+	      _react2.default.createElement('img', { className: 'userPic', src: props.post.user.avatar === null ? '../img/placeholder.png' : props.api + props.post.user.avatar, alt: 'Post Profile Pic' }),
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'row smallFont' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-xs-4 col-xs-offset-1' },
-	          _react2.default.createElement(
-	            'strong',
-	            null,
-	            props.post.user.name
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-xs-4 col-xs-offset-1' },
-	          (0, _moment2.default)(props.post.created_at).fromNow()
-	        )
+	        'span',
+	        { className: 'post-author' },
+	        props.post.user.name
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        { className: 'time' },
+	        (0, _moment2.default)(props.post.created_at).fromNow()
 	      )
 	    ),
-	    _react2.default.createElement('br', null),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'row' },
@@ -28586,7 +28572,7 @@
 	        { className: 'col-xs-8 col-xs-offset-2' },
 	        _react2.default.createElement(
 	          'p',
-	          { className: 'chirpInput' },
+	          { className: 'post-body' },
 	          props.post.body
 	        )
 	      )
@@ -43144,7 +43130,7 @@
 	    }, {
 	        key: 'handleAll',
 	        value: function handleAll(response) {
-	            console.log('handleAll ', response);
+	            // console.log('handleAll ', response)
 	            (0, _sharedState.sharedState)({
 	                people: response.users
 	            });
@@ -43185,39 +43171,17 @@
 	            // console.log(i, id)
 	        }
 	    }, {
-	        key: 'unfollow',
-	        value: function unfollow() {}
-	    }, {
 	        key: 'handleFollow',
 	        value: function handleFollow(response) {
-	            //   // TODO: will fire when button is clicked, which will then fire follow() method. if following, then change button text to unfollow. if no following, have text show as follow. need to call on whatever Keith is sending me.
-	            //   if (typeof response.id.follow != true) {
-	            //       sessionStorage.setItem('chirp-id', response.id)
-	            //       sharedState({
-	            //           id: response.id })
-	            //       browser.history.push('/api/users/:id/follow')
-	            //       // should this go there?
-	            //   }
-	            //   else {
-	            //       // response.forEach(function(error) {
-	            //       //     var errorDiv = document.createElement('div')
-	            //       //     errorDiv.classList.add('alert', 'alert-danger')
-	            //       //     errorDiv.innerHTML = error
-	            //       //     document.querySelector('#errors').appendChild(errorDiv)
-	            //       // })
-	            //   }
+
 	            this.all();
-	            // console.log('handleFollow ', response)
-	            (0, _sharedState.sharedState)({
-	                refresh: true
-	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this3 = this;
 
-	            console.log('render people ', this.state.people);
+	            // console.log('render people ', this.state.people)
 	            var People = (0, _sharedState.sharedState)().people.map(function (person, i) {
 	                return _react2.default.createElement(_Person2.default, { person: person, key: i, followed: person.following, api: (0, _sharedState.sharedState)().api, follow: function follow() {
 	                        return _this3.follow(i, person.id);
@@ -43231,6 +43195,7 @@
 	                    null,
 	                    'Interesting People'
 	                ),
+	                _react2.default.createElement('hr', null),
 	                People
 	            );
 	        }
@@ -43260,38 +43225,43 @@
 	var Person = function Person(props) {
 	  return _react2.default.createElement(
 	    "div",
-	    { className: "row" },
+	    { className: "container-fluid" },
 	    _react2.default.createElement(
 	      "div",
-	      { className: "col-xs-3" },
-	      _react2.default.createElement("img", { className: "followPic", src: "https://robohash.org/keith", alt: "Keith Smith Profile Pic" })
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "col-xs-6" },
+	      { className: "row" },
 	      _react2.default.createElement(
 	        "div",
-	        { className: "row smallFont" },
+	        { className: "col-xs-3" },
+	        _react2.default.createElement("img", { className: "userPic", src: props.person.avatar === null ? '../img/placeholder.png' : props.api + props.person.avatar, alt: "Post Profile Pic" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-xs-6" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-xs-4 col-xs-offset-1" },
+	          { className: "row smallFont" },
 	          _react2.default.createElement(
-	            "strong",
-	            null,
-	            props.person.name
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "col-xs-4 col-xs-offset-1" },
+	            "div",
+	            { className: "col-xs-4 col-xs-offset-1" },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              props.person.name
+	            )
+	          ),
 	          _react2.default.createElement(
-	            "button",
-	            { id: "follow", type: "button", className: props.person.following ? 'btn btn-danger' : 'btn btn-primary', onClick: props.follow },
-	            props.person.following ? 'Unfollow' : 'Follow'
+	            "div",
+	            { className: "col-xs-4 col-xs-offset-1" },
+	            _react2.default.createElement(
+	              "button",
+	              { id: "follow", type: "button", className: props.person.following ? 'btn btn-danger' : 'btn btn-primary', onClick: props.follow },
+	              props.person.following ? 'Unfollow' : 'Follow'
+	            )
 	          )
 	        )
 	      )
-	    )
+	    ),
+	    _react2.default.createElement("hr", null)
 	  );
 	};
 
