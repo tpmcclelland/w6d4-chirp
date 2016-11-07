@@ -6,7 +6,7 @@ const Person = (props) =>(
 <div className="row">
  <div className="col-xs-3">
    {/* <img className="followPic" src={"http://robohash.org/" + props.person.name}  alt="Profile Pic" /> */}
-   <img className="userPic" src={props.person.avatar === null? '../img/placeholder.png' : (props.api + props.person.avatar)} alt="Post Profile Pic" />
+   <img className="userPic" src={props.person.avatar === null? './img/placeholder.png' : (props.api + props.person.avatar)} alt="Post Profile Pic" />
  </div>
  <div className="col-xs-6">
    <div className="row smallFont">

@@ -31,7 +31,6 @@ header {
 }
 
 .column {
-  border: 1px solid black;
   border-radius: 4px;
 }
 
@@ -42,6 +41,10 @@ header {
 #chirpLogo {
   width: 20%;
   height: 20%;
+}
+
+.padding {
+  padding: 20px;
 }
 
 .profilePic {
@@ -83,6 +86,10 @@ header {
   font-size: 20px;
   font-weight: bold;
   text-transform: capitalize;
+}
+
+#user {
+  position: fixed;
 }
 
 .time {

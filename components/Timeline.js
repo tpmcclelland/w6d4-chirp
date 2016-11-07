@@ -132,7 +132,7 @@ class Timeline extends React.Component {
 
         var imageSrc = sharedState().api + sharedState().user.avatar
 
-        return  <div id="chirping">
+        return  <div id="chirping" className="padding">
               <div className="list-unstyled">
                 <div className="row background-blue">
                   <div className="col-xs-2">

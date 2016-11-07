@@ -28485,7 +28485,7 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'chirping' },
+	                { id: 'chirping', className: 'padding' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'list-unstyled' },
@@ -43232,7 +43232,7 @@
 	      _react2.default.createElement(
 	        "div",
 	        { className: "col-xs-3" },
-	        _react2.default.createElement("img", { className: "userPic", src: props.person.avatar === null ? '../img/placeholder.png' : props.api + props.person.avatar, alt: "Post Profile Pic" })
+	        _react2.default.createElement("img", { className: "userPic", src: props.person.avatar === null ? './img/placeholder.png' : props.api + props.person.avatar, alt: "Post Profile Pic" })
 	      ),
 	      _react2.default.createElement(
 	        "div",
