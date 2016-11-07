@@ -153,22 +153,7 @@ unfollow() {
 }
 
 handleFollow(response){
-      //   // TODO: will fire when button is clicked, which will then fire follow() method. if following, then change button text to unfollow. if no following, have text show as follow. need to call on whatever Keith is sending me.
-      //   if (typeof response.id.follow != true) {
-      //       sessionStorage.setItem('chirp-id', response.id)
-      //       sharedState({
-      //           id: response.id })
-      //       browser.history.push('/api/users/:id/follow')
-      //       // should this go there?
-      //   }
-      //   else {
-      //       // response.forEach(function(error) {
-      //       //     var errorDiv = document.createElement('div')
-      //       //     errorDiv.classList.add('alert', 'alert-danger')
-      //       //     errorDiv.innerHTML = error
-      //       //     document.querySelector('#errors').appendChild(errorDiv)
-      //       // })
-      //   }
+
       this.all()
       // console.log('handleFollow ', response)
       sharedState({

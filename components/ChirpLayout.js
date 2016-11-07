@@ -35,7 +35,7 @@ class ChirpLayout extends React.Component {
                         <div className="col-xs-3 text-center column">
                             <Profile />
                         </div>
-                        <div className="col-xs-6 text-center column">
+                        <div className="col-xs-6 column">
                             <Timeline />
                         </div>
                         <div className="col-xs-3 text-center column">

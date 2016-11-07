@@ -134,7 +134,7 @@ class Timeline extends React.Component {
 
         return  <div id="chirping">
               <div className="list-unstyled">
-                <div className="row">
+                <div className="row background-blue">
                   <div className="col-xs-2">
                     <img className="profilePic" src={imageSrc} alt="Profile Picture" />
                   </div>
@@ -147,6 +147,7 @@ class Timeline extends React.Component {
                 </div>
                 <hr />
               </div>
+                <br />
                 {Posts}
             </div>
             </div>
