@@ -49,17 +49,18 @@ class Profile extends React.Component {
                 <img className="profilePic" src={imageSrc} alt="Profile Picture" />
                   <div>{this.state.user.name}</div>
                   <span>{this.state.user.email}</span>
+                  <br/> <br/>
                   <div className="row">
                     <div className="col-xs-4">
-                      <div>Chirps</div>
+                      <div><strong>Chirps</strong></div>
                       <div>{this.getPostCount()}</div>
                     </div>
                     <div className="col-xs-4">
-                      <div>Following</div>
+                      <div><strong>Following</strong></div>
                       <div>{this.getFollowingCount()}</div>
                     </div>
                     <div className="col-xs-4">
-                      <div>Followers</div>
+                      <div><strong>Followers</strong></div>
                       <div>N/A</div>
                     </div>
                   </div>

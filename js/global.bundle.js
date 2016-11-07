@@ -28249,6 +28249,9 @@
 	                    null,
 	                    this.state.user.email
 	                ),
+	                _react2.default.createElement('br', null),
+	                ' ',
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
@@ -28258,7 +28261,11 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,
-	                            'Chirps'
+	                            _react2.default.createElement(
+	                                'strong',
+	                                null,
+	                                'Chirps'
+	                            )
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -28272,7 +28279,11 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,
-	                            'Following'
+	                            _react2.default.createElement(
+	                                'strong',
+	                                null,
+	                                'Following'
+	                            )
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -28286,7 +28297,11 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,
-	                            'Followers'
+	                            _react2.default.createElement(
+	                                'strong',
+	                                null,
+	                                'Followers'
+	                            )
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -28552,7 +28567,7 @@
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'col-xs-12' },
-	      _react2.default.createElement('img', { className: 'userPic', src: props.post.user.avatar === null ? '../img/placeholder.png' : props.api + props.post.user.avatar, alt: 'Post Profile Pic' }),
+	      _react2.default.createElement('img', { className: 'userPic', src: props.post.user.avatar === null ? './img/placeholder.png' : props.api + props.post.user.avatar, alt: 'Post Profile Pic' }),
 	      _react2.default.createElement(
 	        'span',
 	        { className: 'post-author' },
