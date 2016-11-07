@@ -1,3 +1,4 @@
+
 * { box-sizing: border-box; }
 img { width: 100%; }
 
@@ -17,12 +18,15 @@ img { width: 100%; }
 
 header {
     border-bottom: 3px solid black;
-    margin-top: 5px;
     position: fixed;
-    z-index: 10000;
-    background-color: rgb(230, 224, 220);
+    z-index: 10;
+    background-color:  rgb(230, 224, 220) ;
     padding: 10px;
 
+}
+
+#searchBar {
+    width: 40%;
 }
 .column {
     border: 1px solid black;
@@ -44,6 +48,7 @@ header {
     width: 35px;
     border-radius: 4px;
 }
+
 .userPic{
     margin-top: 10px;
     width: 50px;
@@ -54,8 +59,7 @@ header {
     font-size: 10px;
 }
 .chirpInput {
-    text-overflow: ellipsis;
-    overflow: hidden;
+    overflow-wrap: break-word;
     padding: 8px;
 }
 
@@ -71,4 +75,20 @@ header {
         background: #E8F5FD;
         padding-top: 20px;
     }
+}
+
+.post-author {
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.time {
+    padding-left: 10px;
+    font-style: italic;
+}
+
+.post-body {
+    font-size: 20px;
 }

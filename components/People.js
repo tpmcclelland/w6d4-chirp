@@ -102,7 +102,7 @@ all(){
 }
 
 handleAll(response) {
-   console.log('handleAll ', response)
+   // console.log('handleAll ', response)
    sharedState({
       people: response.users
    })
@@ -148,29 +148,22 @@ follow(i, id) {
       // console.log(i, id)
     }
 
-unfollow() {
-
-}
-
 handleFollow(response){
 
       this.all()
-      // console.log('handleFollow ', response)
-      sharedState({
-         refresh: true
-      })
     }
 
 
 
 render() {
-   console.log('render people ', this.state.people)
+   // console.log('render people ', this.state.people)
    var People = sharedState().people.map((person, i) => {
       return <Person person={person} key={i} followed={person.following} api={sharedState().api} follow={() => this.follow(i, person.id)} />
    }
 )
         return <div id="following">
               <h2>Interesting People</h2>
+              <hr />
               {People}
         </div>
     }

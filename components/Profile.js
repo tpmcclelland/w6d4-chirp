@@ -32,9 +32,9 @@ class Profile extends React.Component {
     }
 
     getFollowingCount() {
-        // console.log('following count', sharedState().posts, sharedState().user)
-        return sharedState().posts.reduce(function(previous, current) {
-            if (current.user.following) {
+        // console.log('following count', sharedState().people)
+        return sharedState().people.reduce(function(previous, current) {
+            if (current.following) {
                 return ++previous
             } else {
                 return previous

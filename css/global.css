@@ -20,11 +20,14 @@ img {
 
 header {
   border-bottom: 3px solid black;
-  margin-top: 5px;
   position: fixed;
-  z-index: 10000;
+  z-index: 10;
   background-color: #e6e0dc;
   padding: 10px;
+}
+
+#searchBar {
+  width: 40%;
 }
 
 .column {
@@ -57,8 +60,7 @@ header {
 }
 
 .chirpInput {
-  text-overflow: ellipsis;
-  overflow: hidden;
+  overflow-wrap: break-word;
   padding: 8px;
 }
 
@@ -74,4 +76,20 @@ header {
 #chirping .background-blue {
   background: #E8F5FD;
   padding-top: 20px;
+}
+
+.post-author {
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.time {
+  padding-left: 10px;
+  font-style: italic;
+}
+
+.post-body {
+  font-size: 20px;
 }
